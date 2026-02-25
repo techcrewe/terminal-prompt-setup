@@ -1,0 +1,101 @@
+# ==========================================
+# PROMPT STRUCTURE:
+# LINE 1: [os_type][shell][user]
+# LINE 2: [directory]
+# LINE 3: [character]
+# ==========================================
+# format = """
+# ${custom.os_type}$shell${custom.user}
+# $directory
+# $character
+# """
+
+# format = """
+# $os${custom.os_type}$shell${custom.user}
+# ${custom.dir_display}
+# $character
+# """
+
+format = """
+$os${custom.os_type}$shell$hostname$username
+${custom.dir_display}
+$character"""
+
+scan_timeout = 100
+command_timeout = 1000
+
+# LINE 1 - BLOCK 1: OS type (grey)
+[custom.os_type]
+command = "/home/sjc/.config/starship-scripts/os_type.sh"
+when = "/home/sjc/.config/starship-scripts/true.sh"
+shell = ["/usr/bin/sh"]
+style = "fg:#F6F6F6 bg:#464646"
+format = "[$output ]($style)"
+
+[os]
+disabled = false
+style = "fg:#F6F6F6 bg:#464646"
+format = "[ $symbol ]($style)"
+
+[os.symbols]
+Windows = ""
+Ubuntu = ""
+Debian = ""
+Arch = ""
+Macos = ""
+Unknown = ""
+
+# LINE 1 - BLOCK 2: Shell type (white)
+[shell]
+disabled = false
+style = "fg:#000000 bg:#F6F6F6"
+format = "[  $indicator ]($style)"
+powershell_indicator = "pwsh"
+bash_indicator = "bash"
+zsh_indicator = "zsh"
+unknown_indicator = "sh"
+
+# LINE 1 - BLOCK 3: hostname/username (yellow)
+
+[hostname]
+ssh_only = false
+trim_at = ""
+style = "fg:#000000 bg:#F8E398"
+format = "[ $hostname ]($style)"
+disabled = false
+
+[username]
+show_always = true
+style_user = "fg:#000000 bg:#F8E398"
+style_root = "fg:#000000 bg:#F8E398"
+format = "[/$user ]($style)"
+disabled = false
+
+[custom.user]
+command = "/home/sjc/.config/starship-scripts/user.sh"
+when = "/home/sjc/.config/starship-scripts/true.sh"
+shell = ["/usr/bin/sh"]
+style = "fg:#000000 bg:#F8E398"
+format = "[ $output ]($style)"
+
+# LINE 2: Current directory
+# [directory]
+# style = "fg:#F6F6F6 bg:#2D2D2D"
+# format = "[\\[](bold cyan)[ $path ](fg:#F6F6F6 bg:#2D2D2D)[\\]](bold cyan)"
+# format = "[\\[](bold cyan)[ $path ](fg:bold cyan bg:#2D2D2D)[\\]](bold cyan)"
+# truncation_length = 3
+# truncate_to_repo = false
+# home_symbol = "󰋜"
+# truncation_symbol = " » "
+
+[custom.dir_display]
+command = "/home/sjc/.config/starship-scripts/dir_display.sh"
+when = "true"
+shell = ["/usr/bin/bash"]
+# format = "[\\[](cyan)[ $output ](fg:cyan bg:#2D2D2D)[\\]](cyan)"
+format = "[\\[](cyan)[ $output ](fg:cyan)[\\]](cyan)"
+
+# LINE 3: Prompt character
+[character]
+success_symbol = "[❯](bold #F8E398)"
+error_symbol = "[❯](bold red)"
