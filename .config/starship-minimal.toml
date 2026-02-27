@@ -1,7 +1,19 @@
 # =========================
 # Minimal single-line prompt
 # =========================
-add_newline = true
+add_newline = false
+
+# format = """
+# $os\
+# $shell\
+# $directory\
+# $git_branch\
+# $git_status\
+# $fill\
+# $time\
+# $line_break\
+# $character
+# """
 
 format = """
 $os\
@@ -9,11 +21,12 @@ $shell\
 $directory\
 $git_branch\
 $git_status\
-$fill\
+..........\
 $time\
 $line_break\
 $character
 """
+
 
 # ---------- OS ----------
 [os]
@@ -72,7 +85,7 @@ symbol = "."
 [time]
 disabled = false
 time_format = "%I:%M:%S %p"
-style = "bold bright-cyan"
+style = "bold bright-green"
 format = "[ $time ]($style)"
 
 # ---------- Prompt character ----------

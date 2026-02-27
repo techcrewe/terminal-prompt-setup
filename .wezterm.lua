@@ -12,15 +12,14 @@ config.default_prog = { "wsl.exe", "-d", "Ubuntu" }
 -- ================================
 config.font_size = 10
 config.line_height = 1.0
-config.color_scheme = "Dracula Dark"
+config.color_scheme = "Gruvbox Dark (Hard)"
+--config.color_scheme = "Tokyo Night Dark"
 
 config.colors = {
   cursor_bg = "#f8f8f2",
   cursor_fg = "#282a36",
   cursor_border = "#f8f8f2",
 }
-
-config.enable_tab_bar = true
 
 -- ================================
 -- Launch menu (from your original config)
@@ -147,8 +146,13 @@ config.keys = {
 
 }
 
+config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
+
+-- This forces wezterm to draw its own title bar
+config.window_background_opacity = 1.0
+
 config.enable_tab_bar = true
-config.tab_bar_at_bottom = true
+config.tab_bar_at_bottom = false
 
 config.enable_scroll_bar = true
 config.scrollback_lines = 50000

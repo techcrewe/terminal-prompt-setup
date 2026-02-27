@@ -114,6 +114,33 @@ setopt PROMPT_SUBST
 
 export PATH="$HOME/.opencode/bin:$PATH"
 
+# --- ls colours (match bash / no background on dirs) ---
+# if [ -x /usr/bin/dircolors ]; then
+#   # Load your custom ~/.dircolors if present, otherwise defaults
+#   if [ -r "$HOME/.dircolors" ]; then
+#     eval "$(dircolors -b "$HOME/.dircolors")"
+#   else
+#     eval "$(dircolors -b)"
+#   fi
+
+#   # Ensure directories have NO background (bold blue)
+#   # export LS_COLORS="${LS_COLORS}:di=01;36"
+
+#   # Use colour for interactive listings
+#   alias ls='ls --color=auto'
+# fi
+
+# --- ls colours ---
+if [ -x /usr/bin/dircolors ]; then
+  if [ -r "$HOME/.dircolors" ]; then
+    eval "$(dircolors -b "$HOME/.dircolors")"
+  else
+    eval "$(dircolors -b)"
+  fi
+
+  alias ls='ls --color=auto'
+fi
+
 
 starship_switch() {
   export STARSHIP_CONFIG="$HOME/.config/starship-$1.toml"
@@ -131,3 +158,5 @@ if [ -z "$STARSHIP_CONFIG" ]; then
 fi
 
 eval "$(starship init zsh)"
+export PATH="$HOME/.local/bin:$PATH"
+export PATH=~/.npm-global/bin:$PATH
